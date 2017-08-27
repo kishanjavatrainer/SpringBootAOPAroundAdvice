@@ -5,11 +5,13 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+import com.infotech.model.Account;
+
 @Aspect
 @Component
 public class AccountServiceAspect {
 
-	@Around("execution(* com.infotech.service.impl.AccountServiceImpl.*(..))")
+	@Around("execution(* com.infotech.service.impl.AccountServiceImpl.updateAccount*(..))")
 	public Object aroundAdvice(ProceedingJoinPoint joinPoint){
 		System.out.println("Before method:"+joinPoint.getSignature());
 		
@@ -17,6 +19,10 @@ public class AccountServiceAspect {
 		Object object= null;
 		try {
 			object=joinPoint.proceed();
+			if(object instanceof Account){
+				Account account =(Account)object;
+				System.out.println(account);
+			}
 		} catch (Throwable ex) {
 			System.out.println(ex.getMessage());
 		}

@@ -3,13 +3,11 @@ package com.infotech;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import com.infotech.model.Account;
 import com.infotech.service.impl.AccountServiceImpl;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class SpringBootAopApplication {
 
 	public static void main(String[] args) {
